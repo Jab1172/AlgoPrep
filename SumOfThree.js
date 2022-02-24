@@ -15,4 +15,11 @@ var twoSum = function (nums, target) {
   //         //      0 1 2
   //     let nums = [1,2,3]
   //     let target = 5
+
+  for (let i = 0; i < nums.length; i++) {
+    let numIndex = nums[i] + nums[i + 1];
+    if (numIndex === target) {
+      return [i, i + 1];
+    }
+  }
 };
