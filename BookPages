@@ -1,0 +1,42 @@
+/*
+Given a book of pages with words on each page, return two things:
+
+1.A collection of words with an array of their correspoundng pages. 
+      
+2.Words that are shared within different pages
+*/
+
+//let input = ['this is a sample problem', 'book is great sample']
+
+
+/*
+Output:
+
+this: [1]
+is: [1, 2]
+a: [1]
+sample: [1, 2]
+problem: [1]
+book: [2]
+great: [2]
+
+*/
+
+function wordPages(input){
+  let count = {};
+
+  for (let i = 0; i < input.length; i++){
+    input[i].split(' ').forEach((element) => {
+      if (!count[element]){
+        count[element] = [i + 1]
+      } else {
+        if (!count[element].includes(i + 1)){
+                  count[element].push(i + 1)
+        }
+      }
+    })
+  }
+  return count
+}
+
+console.log(wordPages(['this this is a sample problem', 'book is great sample']))
