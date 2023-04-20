@@ -1,0 +1,32 @@
+let array1 = [1, 3, 2,  7,  4, null, null,];
+// let array1 = [null, null, null, null, null, null, null, null]
+let tree1 = generateTree(array1);
+let array2 = [1, 5, 9, 2, null, 6, 7]
+let tree2 = generateTree(array2);
+
+// console.log([tree1,tree2])
+/*
+       1                         1
+    /     \                   /     \
+  3        2                5        9
+ /   \     /   \          /   \     /  \
+7     4  null   null    2      5   6    7
+                      /   \   /  \       
+                    
+*/
+//pre order
+function mergeTree(tree1,tree2){
+  
+  if(tree1 === null){return tree2}//  null
+  if(tree2 === null){return tree1}// 7
+
+  tree1.value+=tree2.value /// A
+
+  tree1.left = mergeTree(tree1.left, tree2.left) // L
+  tree1.right = mergeTree(tree1.right, tree2.right) // R
+
+  return tree1
+}
+
+console.log(mergeTree(tree1, tree2))
+
