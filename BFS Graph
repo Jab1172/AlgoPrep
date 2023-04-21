@@ -1,0 +1,35 @@
+let num = 8;
+let array = 
+  [[0, 1], [1, 2], [2, 4], [3, 5], [4, 5],[1, 7], [4, 6], [4, 7], [5, 6]];
+let graph = deserialize(8,array);
+console.log(graph);
+
+
+//Breadth First Search
+function bfs(vertex) {
+  let result = [];
+  let visited = new Set();//Space: O(V)
+  
+  let queue = [vertex]; //Space: O(V)
+  visited.add(vertex);
+  
+  while (queue.length>0) { //Time: O(V)
+    let current = queue.shift();
+
+    result.push(current.id);
+
+    for(let edge of current.edges) { //Time: O(E)
+      if(!visited.has(edge)) {
+        queue.push(edge);
+        visited.add(edge);
+      }
+
+    }
+    
+  }
+  return result;//Space: O(V)
+  
+}
+console.log("BFS:", bfs(graph));
+//Time Complexity: O(V+2E) => O(V+E), V = verticies, E = edges
+//Space Complexity: O(3V) => O(V), V = verticies
