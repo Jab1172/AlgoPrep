@@ -1,0 +1,33 @@
+You're given an array of integers and an integer. Write a function that moves all instances of that integer in the array to the end of the array and returns the array.
+The function should perform this in place (i.e., it should mutate the input array) and doesn't need to maintain the order of the other integers. 
+
+function moveElementToEnd(array, toMove) {
+  // Write your code here.
+  let leftIdx = 0
+  let rightIdx = array.length - 1
+  while (leftIdx < rightIdx) {
+    while (leftIdx < rightIdx && array[rightIdx] === toMove){  
+         rightIdx--
+    }
+    if (array[leftIdx] === toMove) {
+          swap(leftIdx,rightIdx,array) 
+    }
+          leftIdx++
+          console.log(array)     
+  }
+  return array
+}
+
+function swap(left,right,array){
+ 
+  let temp = array[right]
+  array[right] = array[left]
+  array[left] = temp
+}
+/*
+isolate each value in array
+compare it to the toMove===value
+if the values match arrvalue === toMove 
+swap values
+
+*/
